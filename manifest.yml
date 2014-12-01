@@ -1,4 +1,4 @@
-name: default
+name: roadiz-sami-theme
 
 static:
     'css/sami.css': 'css/sami.css'
@@ -27,7 +27,7 @@ static:
     'fonts/rezozero-sans-regular-webfont.woff': 'fonts/rezozero-sans-regular-webfont.woff'
 
     'img/header@2x.png': 'img/header@2x.png'
-    
+
     'js/bootstrap.min.js': 'js/bootstrap.min.js'
     'js/jquery-1.11.1.min.js': 'js/jquery-1.11.1.min.js'
     'js/handlebars.min.js': 'js/handlebars.min.js'
