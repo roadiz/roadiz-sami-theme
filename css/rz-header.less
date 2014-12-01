@@ -1,0 +1,100 @@
+#rezozero-header {
+    position: fixed;
+    background: @rezozero-header-color;
+    z-index: 9999;
+    width: 100%;
+    height: @rz-header-height;
+
+    color: #EEE;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    padding: 0px;
+
+    .rezozero-title{
+        display: inline-block;
+        font-size: 18px;
+        padding: 14px 10px;
+        height: @rz-header-height;
+        width: 300px;
+        .box-sizing();
+        background-color: #fff;
+        color: @rezozero-header-color;
+        margin: 0;
+
+        background-image: url(../img/header@2x.png);
+        background-size: 300px 50px;
+        background-position: 0 0;
+
+        text-indent: -9999px;
+    }
+
+    ul {
+        display: inline-block;
+        margin: 0 30px 0 0;
+        vertical-align: top;
+        padding: 0px;
+    }
+    li {
+        display: inline-block;
+        position: relative;
+        color: #c8c8c8;
+        .box-sizing();
+
+        &:before {
+            content: '';
+            background-color: #828282;
+            width: 1px;
+            height: 37px;
+            display: inline-block;
+            position: absolute;
+            left: 0px;
+            top: 0px ;
+        }
+
+        &.active,
+        &:hover{
+            background: lighten(@rezozero-header-color, 5%);
+        }
+
+        &:first-child{
+            &:before{
+                background-color: transparent;
+                width: 0;
+                height: 0;
+            }
+        }
+    }
+    a {
+        display: block;
+        color: #EEE;
+        padding: 19px 20px;
+        font-size: 11px;
+        height: 50px;
+        .box-sizing();
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .socials{
+        a{
+            padding: 20px 10px 10px;
+        }
+    }
+    .fa-github:before {
+        font-size: 25px;
+        line-height: 12px;
+    }
+}
+
+@media (max-width: 991px) {
+    #rezozero-header {
+        display:none;
+    }
+}
