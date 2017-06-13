@@ -1,100 +1,167 @@
-#rezozero-header {
+#roadiz-header{
     position: fixed;
-    background: @rezozero-header-color;
-    z-index: 9999;
-    width: 100%;
-    height: @rz-header-height;
-
-    color: #EEE;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-
+    top:0; right:0; left:0;
+    height: @headerHeight;
     padding: 0px;
+    border-bottom: 1px solid #cccccc;
+    color: #EEE;
+    background: #EBEBEB;
+    .gradient-or(top, #EBEBEB 30%, #E2E2E2 100%);
+    z-index: 990;
 
-    .rezozero-title{
-        display: inline-block;
-        font-size: 18px;
-        padding: 14px 10px;
-        height: @rz-header-height;
-        width: 300px;
-        .box-sizing();
-        background-color: #fff;
-        color: @rezozero-header-color;
-        margin: 0;
-
-        background-image: url(../img/header@2x.png);
-        background-size: 300px 50px;
-        background-position: 0 0;
-
-        text-indent: -9999px;
+    &.absolute{
+        position: absolute;
+        top:100%;
     }
 
-    ul {
-        display: inline-block;
-        margin: 0 30px 0 0;
-        vertical-align: top;
-        padding: 0px;
+    &.fixed{
+        position: fixed;
+        top:0 !important;
     }
-    li {
-        display: inline-block;
+
+    .discover-absolute{
+        position: absolute;
+        top:100%;
+    }
+
+    @media (max-width: 767px) {
         position: relative;
-        color: #c8c8c8;
-        .box-sizing();
-
-        &:before {
-            content: '';
-            background-color: #828282;
-            width: 1px;
-            height: 37px;
-            display: inline-block;
-            position: absolute;
-            left: 0px;
-            top: 0px ;
-        }
-
-        &.active,
-        &:hover{
-            background: lighten(@rezozero-header-color, 5%);
-        }
-
-        &:first-child{
-            &:before{
-                background-color: transparent;
-                width: 0;
-                height: 0;
-            }
-        }
-    }
-    a {
-        display: block;
-        color: #EEE;
-        padding: 19px 20px;
-        font-size: 11px;
-        height: 50px;
-        .box-sizing();
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-
-    .socials{
-        a{
-            padding: 20px 10px 10px;
-        }
-    }
-    .fa-github:before {
-        font-size: 25px;
-        line-height: 12px;
     }
 }
 
-@media (max-width: 991px) {
-    #rezozero-header {
-        display:none;
+.roadiz-title{
+    display: inline-block;
+    vertical-align: top;
+    margin:0;
+}
+
+#roadiz-title-link{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-size: 11px;
+    line-height: @headerHeight;
+    height: @headerHeight;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 299px;
+    color: #888;
+    padding-left: 17px;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    .transition(0.4s background ease-out);
+
+    &:hover{
+        background: lighten(#c8c8c8, 17%);
     }
+
+    .roadiz-icon-roadiz{
+        position: relative;
+        top: 1px;
+        margin-right: 11px;
+        color: #323232;
+        font-size: 91px;
+        font-weight: normal;
+
+        &:before{
+            line-height: @headerHeight;
+        }
+
+    }
+}
+
+#roadiz-title-link-text{
+    position: relative;
+    display: inline-block; vertical-align: top;
+    line-height:@headerHeight;
+}
+
+#roadiz-header-links-list{
+    display: inline-block;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+
+.roadiz-header-link-item{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    color: #c8c8c8;
+    border-left: 1px solid #cccccc;
+    font-weight: 600;
+    .transition(~'0.4s color ease-out, 0.4s background ease-out');
+
+    &.active{
+        background: #fff;
+        cursor: default;
+        color:#60707e;
+
+        a{
+            cursor: default;
+        }
+
+        &:hover{
+            background: #fff;
+        }
+    }
+
+    &:hover{
+        background: lighten(#c8c8c8, 17%);
+    }
+
+    &:last-child{
+        border-right: none;
+    }
+}
+
+.roadiz-header-link{
+    display: block;
+    height: @headerHeight;
+    color: #545454;
+    padding: 0 17px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: @headerHeight + 1;
+    text-transform: uppercase;
+    //letter-spacing: -0.03em;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+
+    &.roadiz-icon-github{
+        font-size: 19px;
+
+        &:before{
+            line-height: @headerHeight;
+        }
+    }
+    &:hover {
+        text-decoration: none;
+        color: #545454;
+    }
+}
+
+
+#alpha-ribbon {
+    position: fixed;
+    width:120px;
+    height:120px;
+    overflow: hidden;
+    right: 0;
+    top: 0;
+    z-index:995;
+}
+
+#alpha-ribbon-inner{
+    position: relative;
+    top:-18px; right:-17px;
+    width:180px; height:25px;
+    font-size:11px; line-height:25px;
+    font-weight: bold;
+    text-align: center; text-transform: uppercase;
+    background: #c3ae95;
+    color:#fff;
+    .transform(rotate(45deg));
+    .transform-origin(0,0);
 }

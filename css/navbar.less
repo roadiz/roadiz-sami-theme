@@ -4,7 +4,7 @@
     margin: 0;
     border-radius: 0;
     border-bottom: 1px solid #ccc;
-    background-color: @alt-color;
+    background-color: #fff;
     background-image: none;
 
     .box-shadow(none);
@@ -32,7 +32,7 @@
     text-transform: uppercase;
 
     padding: 2px 12px;
-    margin: 12px 5px;
+    margin: 17px 5px;
 
     background-color: #f7f7f7;
     text-shadow: none;
@@ -50,17 +50,13 @@
     }
 }
 
-
-
-#navbar-elements {
-    //float: right;
-    padding-left: 0px;
-    background-color: @alt-color;
+.control-nav-bar-cont {
+    display: flex;
+    border-bottom: 1px solid #d4d4d4;
+    background-color: white;
 }
 
-@media (max-width: 768px) {
-    #navbar-elements {
-        float: none !important;
-        padding-left: 2em;
-    }
+
+#control-panel + .navbar-nav {
+    padding-left: 30px;
 }

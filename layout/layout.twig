@@ -4,10 +4,10 @@
     <div id="content">
         {{ block('menu') }}
         <div id="left-column">
-            {{ block('control_panel') }}
             {{ block('leftnav') }}
         </div>
         <div id="right-column">
+            <div id="alpha-ribbon" class="hidden-xs"><div id="alpha-ribbon-inner">Beta version</div></div>
             {% block below_menu '' %}
             <div id="page-content">
                 {% block page_content '' %}
@@ -18,40 +18,28 @@
 {% endblock %}
 
 {% block menu %}
-    <nav id="rezozero-header">
-        <h1 class="rezozero-title">{{ project.config('title') }}</h1>
-        <ul><!--
-        --><li><a href="http://www.roadiz.io">Get the tour</a></li><!--
-        --><li><a href="http://docs.roadiz.io">Documentation</a></li><!--
-           --><li class="active"><a href="{{ path('index.html') }}">API</a></li>
-        </ul>
-
-        <ul class="socials">
-          <li><a class="fa fa-github" ttarget="_blank" href="https://github.com/roadiz/roadiz"></a></li>
+    <nav id="roadiz-header">
+        <h1 class="roadiz-title"><a id="roadiz-title-link" href="{{ path('index.html') }}"><i class="roadiz-icon-roadiz"></i><span id="roadiz-title-link-text">Modern CMS</span></a></h1>
+        <ul id="roadiz-header-links-list" class="hidden-xs">
+            <li class="roadiz-header-link-item"><a class="roadiz-header-link" href="http://www.roadiz.io">Get the tour</a></li>
+            <li class="roadiz-header-link-item"><a class="roadiz-header-link" href="http://docs.roadiz.io">Documentation</a></li>
+            <li class="roadiz-header-link-item active"><a class="roadiz-header-link" href="{{ path('index.html') }}">API</a></li>
+            <li class="roadiz-header-link-item"><a class="roadiz-header-link social-link roadiz-icon-github" ttarget="_blank" href="https://github.com/roadiz/roadiz"></a></li>
         </ul>
     </nav>
     <nav id="site-nav" class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-elements">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ path('classes.html') }}">Classes</a></li>
-                    {% if has_namespaces %}
-                        <li><a href="{{ path('namespaces.html') }}">Namespaces</a></li>
-                    {% endif %}
-                    <li><a href="{{ path('interfaces.html') }}">Interfaces</a></li>
-                    <li><a href="{{ path('traits.html') }}">Traits</a></li>
-                    <li><a href="{{ path('doc-index.html') }}">Index</a></li>
-                    <li><a href="{{ path('search.html') }}">Search</a></li>
-                </ul>
-            </div>
+        <div class="control-nav-bar-cont">
+            {{ block('control_panel') }}
+            <ul class="nav navbar-nav hidden-xs" id='navbar-elements'>
+                <li><a href="{{ path('classes.html') }}">Classes</a></li>
+                {% if has_namespaces %}
+                    <li><a href="{{ path('namespaces.html') }}">Namespaces</a></li>
+                {% endif %}
+                <li><a href="{{ path('interfaces.html') }}">Interfaces</a></li>
+                <li><a href="{{ path('traits.html') }}">Traits</a></li>
+                <li><a href="{{ path('doc-index.html') }}">Index</a></li>
+                <li><a href="{{ path('search.html') }}">Search</a></li>
+            </ul>
         </div>
     </nav>
 {% endblock %}
@@ -63,14 +51,17 @@
 {% block control_panel %}
     <div id="control-panel">
         {% if project.versions|length > 1 %}
-            <form action="#" method="GET">
+            <form action="#" method="GET" class="hidden-xs">
                 <select id="version-switcher" name="version">
                     {% for version in project.versions %}
-                        <option value="{{ path('../' ~ version ~ '/index.html') }}"{{ version == project.version ? ' selected' : '' }}>{{ version.longname }}</option>
+                        <option value="{{ path('../' ~ version ~ '/index.html') }}" data-version="{{ version }}">{{ version.longname }}</option>
                     {% endfor %}
                 </select>
             </form>
         {% endif %}
+        <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
         <form id="search-form" action="{{ path('search.html') }}" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"

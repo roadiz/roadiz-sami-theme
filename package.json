@@ -1,5 +1,9 @@
 {
   "name": "roadiz-sami-theme",
+  "scripts": {
+    "build": "NODE_ENV=production grunt",
+    "dev": "grunt watch"
+  },
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.5",

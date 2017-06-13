@@ -1,6 +1,7 @@
 @import "elements.less";
 @import "vars.less";
 @import "fonts.less";
+@import "icons.less";
 @import "labels.less";
 @import "navbar.less";
 @import "rz-header.less";
@@ -43,17 +44,12 @@ h4, .h4 {
     .box-sizing();
     background: white;
 }
-
-.namespace-breadcrumbs .breadcrumb > li + li:before {
-    content: "\\"
-}
-
 /* Site columns */
 
 #right-column {
-    //margin-left: 25%;
-    margin-left:300px;
-    padding-top: @header-height + @rz-header-height;
+    margin-left: 30vw;
+    //margin-left:300px;
+    padding-top: @headerHeight + @controlsHeight + 30px;
 }
 
 #page-content {
@@ -61,26 +57,28 @@ h4, .h4 {
 }
 
 #left-column {
-    //width: 25%;
-    width: 300px;
+    width: 30vw;
+    //width: 300px;
     position: fixed;
     //border-right: 1px solid #ccc;
     line-height: 18px;
     font-size: 13px;
-    top: @header-height + @rz-header-height;
-    bottom: @header-height;
+    top: @headerHeight + @controlsHeight;
+
+    height: calc(~"100% - " @headerHeight + @controlsHeight);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
     #left-column {
         display: none;
     }
     #right-column {
         width: 100%;
         margin-left: 0;
-        padding-top: @header-height;
+        padding-top: @headerHeight;
     }
     #site-nav.navbar-default {
+        position: relative;
         top:0px;
     }
 }
@@ -104,6 +102,12 @@ h4, .h4 {
 #api-tree ul li {
     padding: 0;
     margin: 0;
+}
+
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "";
 }
 
 /* Prevents the menu from jittering on lad */
@@ -165,11 +169,21 @@ h4, .h4 {
 
 #control-panel {
     background: @main-contrast-color;
-    //border-bottom: 1px solid #666;
     padding: 12px;
-
     .box-sizing();
-    height: 66px;
+    width: 30vw;
+    height: @controlsHeight;
+
+    display: flex;
+    display: -ms-flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @media (max-width: 767px) {
+        width: 100vw;
+    }
 }
 
 #control-panel form {

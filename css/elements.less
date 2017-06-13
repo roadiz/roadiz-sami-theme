@@ -41,6 +41,17 @@
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
 }
 
+
+.gradient-or (@origin: top, @start: #fff, @stop: #000) {
+    background-color: @start;
+    background-image: -webkit-linear-gradient(@origin, @start, @stop);
+    background-image: -moz-linear-gradient(@origin, @start, @stop);
+    background-image: -o-linear-gradient(@origin, @start, @stop);
+    background-image: -ms-linear-gradient(@origin, @start, @stop);
+    background-image: linear-gradient(@origin, @start, @stop);
+}
+
+
 .bw-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
   background: @color;
   background: -webkit-gradient(linear,
